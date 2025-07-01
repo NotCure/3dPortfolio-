@@ -1,40 +1,59 @@
 .matrix {
-  display: grid;
-  grid-template-columns: repeat(1, auto);
-  gap: 0.5rem;
   font-family: monospace;
-  font-size: 0.9rem;
+  font-size: 0.39rem;
   color: #00ff88;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 1rem;
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  line-height: 1.2;
+  max-width: 158px;
+  max-height: 110px;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+
+  display: block;
+  text-align: left;
+  vertical-align: top;
 }
 
-.cell {
+.cell,
+.linkCell {
+  display: inline;
+  user-select: none;
+  color: #00ff88;
+  text-decoration: none;
+}
+
+.linkCell {
+  display: inline-block;
+  white-space: nowrap;
   position: relative;
-  transition: color 0.3s ease;
+  text-decoration: underline;
+  color: #00ff88;
   cursor: pointer;
 }
 
-.cell::after {
+.linkCell::after {
   content: attr(data-label);
   position: absolute;
+
   inset: 0;
   opacity: 0;
   color: #ffffff;
   font-weight: bold;
-  transition: opacity 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+  transition: opacity 0.01s ease;
+  color: var(--label-color, white);
 }
 
-.cell:hover {
+.linkCell:hover {
   color: transparent;
 }
 
-.cell:hover::after {
+.linkCell:hover::after {
   opacity: 1;
 }

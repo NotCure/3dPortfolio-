@@ -66,7 +66,7 @@ export default function Monitor(props: any) {
             roughness={0.45}
             side={THREE.DoubleSide}
           />
-          <Html transform center distanceFactor={1}>
+          <Html transform distanceFactor={1}>
             <BinaryGrid />
           </Html>
         </mesh>
