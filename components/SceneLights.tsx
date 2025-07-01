@@ -13,7 +13,6 @@ import { useHelper } from "@react-three/drei";
 import { blenderToThreeCoords } from "@/utils/blender";
 
 const AreaPos = blenderToThreeCoords([-2.1674, 1.04729, 2.31498]);
-const PointPos = blenderToThreeCoords([0.22319, -0.087753, 0.73635]);
 
 export default function SceneLights() {
   const spotRef = useRef<SpotLight>(null!);
@@ -40,12 +39,7 @@ export default function SceneLights() {
         shadow-mapSize-height={1024}
       />
 
-      <pointLight
-        position={PointPos}
-        intensity={0.8}
-        color="#FF2E31"
-        distance={0.017}
-      />
+
     </>
   );
 }
