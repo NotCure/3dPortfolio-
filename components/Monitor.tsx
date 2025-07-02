@@ -2,14 +2,16 @@
 
 import { Html, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { blenderToThreeCoords } from "@/utils/blender";
 import * as THREE from "three";
-import BinaryGrid from "./BinaryGrid";
 import LandAnimation from "./LandAnimation";
+import BinaryGrid from "./BinaryGrid";
+import AboutScreen from "./AboutScreen";
+import ContactScreen from "./ContactScreen";
 const MODEL = "/models/tvnolight.glb";
-const PointPos = blenderToThreeCoords([0.22319, -0.087753, 0.73635]);
 
+const PointPos = blenderToThreeCoords([0.22319, -0.087753, 0.73635]);
 useGLTF.preload(MODEL);
 
 export default function Monitor(props: any) {
@@ -42,6 +44,8 @@ export default function Monitor(props: any) {
     }
   });
 
+  const [screen, setScreen] = useState("home");
+
   const { nodes } = gltf;
 
   return (
@@ -67,7 +71,11 @@ export default function Monitor(props: any) {
             side={THREE.DoubleSide}
           />
           <Html transform distanceFactor={1}>
-            <BinaryGrid />
+            <div className="transition-opacity duration-300 ease-in-out">
+              {screen === "home" && <BinaryGrid setScreen={setScreen} />}
+              {screen === "about" && <AboutScreen setScreen={setScreen} />}
+              {screen === "contact" && <ContactScreen />}
+            </div>
           </Html>
         </mesh>
         {[

@@ -25,13 +25,18 @@ function FixedCamera() {
 export default function Scene() {
   return (
     <>
-      <FixedCamera />
+      {/* <FixedCamera /> */}
       <Monitor position={[0, 0, 0]} />
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[10, 10]} />
         <shadowMaterial opacity={0.3} />
       </mesh>
-      {/* <OrbitControls enablePan={false} minDistance={0} maxDistance={6} /> */}
+      <OrbitControls
+        enablePan={false}
+        minDistance={0}
+        maxDistance={6}
+        target={[0, 0.7, 0]}
+      />
     </>
   );
 }

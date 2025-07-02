@@ -30,6 +30,7 @@
   text-decoration: underline;
   color: #00ff88;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .linkCell::after {
@@ -46,7 +47,7 @@
   align-items: center;
   text-align: center;
   white-space: nowrap;
-  transition: opacity 0.01s ease;
+  transition: opacity 0.0001s ease;
   color: var(--label-color, white);
 }
 
