@@ -1,6 +1,5 @@
 "use client";
-import Link from "next/link";
-import styles from "./BinaryGrid.module.css";
+import styles from "./css/BinaryGrid.module.css";
 
 function generateBinaryString(length: number): string {
   return Array.from({ length }, () => (Math.random() > 0.5 ? "1" : "0")).join(

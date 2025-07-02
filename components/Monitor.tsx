@@ -6,9 +6,9 @@ import { useRef, useEffect, useState } from "react";
 import { blenderToThreeCoords } from "@/utils/blender";
 import * as THREE from "three";
 import LandAnimation from "./LandAnimation";
-import BinaryGrid from "./BinaryGrid";
-import AboutScreen from "./AboutScreen";
-import ContactScreen from "./ContactScreen";
+import BinaryGrid from "./Screens/BinaryGrid";
+import AboutScreen from "./Screens/AboutScreen";
+import ContactScreen from "./Screens/ContactScreen";
 const MODEL = "/models/tvnolight.glb";
 
 const PointPos = blenderToThreeCoords([0.22319, -0.087753, 0.73635]);
