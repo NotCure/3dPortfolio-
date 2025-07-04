@@ -14,7 +14,11 @@ const MODEL = "/models/tvnolight.glb";
 const PointPos = blenderToThreeCoords([0.22319, -0.087753, 0.73635]);
 useGLTF.preload(MODEL);
 
-export default function Monitor(props: any) {
+type Props = {
+  screen: string;
+  setScreen: (screen: string) => void;
+};
+export default function Monitor({ screen, setScreen }: Props) {
   const gltf: any = useGLTF(MODEL);
   const screenMaterial = useRef<THREE.MeshStandardMaterial>(null);
   const monitorRef = useRef<THREE.Group>(null);
@@ -44,8 +48,6 @@ export default function Monitor(props: any) {
     }
   });
 
-  const [screen, setScreen] = useState("home");
-
   const { nodes } = gltf;
 
   return (
@@ -74,7 +76,7 @@ export default function Monitor(props: any) {
             <div className="transition-opacity duration-300 ease-in-out">
               {screen === "home" && <BinaryGrid setScreen={setScreen} />}
               {screen === "about" && <AboutScreen setScreen={setScreen} />}
-              {screen === "contact" && <ContactScreen />}
+              {screen === "contact" && <ContactScreen setScreen={setScreen} />}
             </div>
           </Html>
         </mesh>

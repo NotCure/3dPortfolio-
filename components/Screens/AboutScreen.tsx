@@ -14,7 +14,7 @@ export default function AboutScreen({ setScreen }: Props) {
         My name is Ebrahim, Currently Computer Science student in Belguim.
         <br />
         Im intrested in Low-level programming, and currently learning front-end
-        mostly. 
+        mostly.
       </p>
     </div>
   );

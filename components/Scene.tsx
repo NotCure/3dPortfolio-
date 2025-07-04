@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { PerspectiveCamera, OrbitControls } from "@react-three/drei";
 import { blenderToThreeCoords } from "@/utils/blender";
 import Monitor from "./Monitor";
 import * as THREE from "three";
+import SceneLights from "@/components/SceneLights";
 
 const cameraPos = blenderToThreeCoords([0.071287, -1.04666, 0.98133]);
 
@@ -23,10 +24,11 @@ function FixedCamera() {
 }
 
 export default function Scene() {
+  const [screen, setScreen] = useState("home");
   return (
     <>
       <FixedCamera />
-      <Monitor position={[0, 0, 0]} />
+      <Monitor position={[0, 0, 0]} screen={screen} setScreen={setScreen} />
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[10, 10]} />
         <shadowMaterial opacity={0.3} />
@@ -37,6 +39,7 @@ export default function Scene() {
         maxDistance={6}
         target={[0, 0.7, 0]}
       /> */}
+      <SceneLights screen={screen} />
     </>
   );
 }
