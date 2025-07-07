@@ -1,5 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faFacebook,
+  faLinkedin,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 type Props = {
@@ -22,6 +26,9 @@ export default function ContactScreen({ setScreen }: Props) {
         </Link>
         <Link href="mailto:hdidaebrahim@gmail.com">
           <FontAwesomeIcon icon={faEnvelope} />
+        </Link>
+        <Link href="https://github.com/NotCure">
+          <FontAwesomeIcon icon={faGithub} />
         </Link>
       </div>
     </div>
