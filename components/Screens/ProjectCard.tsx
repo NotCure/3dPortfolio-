@@ -1,14 +1,26 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
   url: string;
   title: string;
   description: string;
+  tech: string;
 };
 
-export default function ProjectCard({ url, title, description }: Props) {
+const techImages: Record<string, string> = {
+  Cpp: "/logos/Cpp.svg",
+  Java: "/logos/Java.svg",
+  Javascript: "/logos/Javascript.svg",
+  Nextjs: "/logos/Nextjs.svg",
+  Typescript: "/logos/Typescript.svg",
+};
+
+export default function ProjectCard({ url, title, description, tech }: Props) {
+  const techImageSrc = tech ? techImages[tech] : null;
+
   return (
     <div className="border border-white rounded-xs p-1">
       <h2>{title}</h2>
@@ -18,9 +30,17 @@ export default function ProjectCard({ url, title, description }: Props) {
           <FontAwesomeIcon className="text-[0.5rem]" icon={faGithub} />
         </Link>
         <p>|</p>
-        <Link href={url} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faGithub} />
-        </Link>
+        {techImageSrc && (
+          <>
+            <Image
+              src={techImageSrc}
+              alt={tech}
+              width={8}
+              height={8}
+              className="inline-block"
+            />
+          </>
+        )}
       </div>
     </div>
   );

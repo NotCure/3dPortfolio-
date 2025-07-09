@@ -16,13 +16,9 @@ export default function ContactScreen({ setScreen }: Props) {
       <div className="grid grid-cols-2 gap-1">
         <ProjectCard
           url="https://github.com/ebrahimhdida/Portfolio3D"
-          title="Portfolio 3D"
-          description="My portfolio website in 3D"
-        />
-        <ProjectCard
-          url="https://github.com/ebrahimhdida/Portfolio3D"
-          title="Portfolio 3D"
-          description="My portfolio website in 3D"
+          title="SVGRAFIX"
+          description="SVG parser & renderer in C++"
+          tech="Javascript"
         />
       </div>
     </div>
