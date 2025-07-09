@@ -1,5 +1,7 @@
 import Link from "next/link";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import ProjectCard from "./ProjectCard";
 type Props = {
   setScreen: (screen: string) => void;
 };
@@ -12,16 +14,16 @@ export default function ContactScreen({ setScreen }: Props) {
       </span>
       <h1 className="text-[#f5f52c]">Projects</h1>
       <div className="grid grid-cols-2 gap-1">
-        <div className="border border-white rounded-xs p-1">
-          <h2>hey</h2>
-        </div>
-        <div className="border border-white rounded-xs p-1">
-          <h2>3D Portfolio</h2>
-          <p className="text-[0.21rem]">
-            this is the 3d portfolio you are seeing now
-          </p>
-          
-        </div>
+        <ProjectCard
+          url="https://github.com/ebrahimhdida/Portfolio3D"
+          title="Portfolio 3D"
+          description="My portfolio website in 3D"
+        />
+        <ProjectCard
+          url="https://github.com/ebrahimhdida/Portfolio3D"
+          title="Portfolio 3D"
+          description="My portfolio website in 3D"
+        />
       </div>
     </div>
   );
