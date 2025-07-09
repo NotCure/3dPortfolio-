@@ -9,6 +9,7 @@ import LandAnimation from "./LandAnimation";
 import BinaryGrid from "./Screens/BinaryGrid";
 import AboutScreen from "./Screens/AboutScreen";
 import ContactScreen from "./Screens/ContactScreen";
+import Project from "./Screens/Project";
 const MODEL = "/models/tvnolight.glb";
 
 const PointPos = blenderToThreeCoords([0.22319, -0.087753, 0.73635]);
@@ -77,6 +78,7 @@ export default function Monitor({ screen, setScreen }: Props) {
               {screen === "home" && <BinaryGrid setScreen={setScreen} />}
               {screen === "about" && <AboutScreen setScreen={setScreen} />}
               {screen === "contact" && <ContactScreen setScreen={setScreen} />}
+              {screen === "projects" && <Project setScreen={setScreen} />}
             </div>
           </Html>
         </mesh>

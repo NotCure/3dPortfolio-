@@ -36,7 +36,7 @@ export default function BinaryGrid({ setScreen }: Props) {
         onClick={() => setScreen("about")}
         style={{
           textDecorationColor: "#007ae8",
-          ["--label-color" as any]: "#007ae8",
+          ["--label-color" as string]: "#007ae8",
         }}
       >
         0110100101101110
@@ -45,7 +45,26 @@ export default function BinaryGrid({ setScreen }: Props) {
     ],
     [generateBinaryString(46)],
     [generateBinaryString(46)],
+    [generateBinaryString(46)],
 
+    [
+      generateBinaryString(16),
+      <span
+        key="projects"
+        className={styles.linkCell}
+        data-label="Projects"
+        onClick={() => setScreen("projects")}
+        style={{
+          textDecorationColor: "#f5f52c",
+          ["--label-color" as string]: "#f5f52c",
+        }}
+      >
+        0110001101101111
+      </span>,
+      generateBinaryString(14),
+    ],
+    [generateBinaryString(46)],
+    [generateBinaryString(46)],
     [
       generateBinaryString(26),
       <span
@@ -55,7 +74,7 @@ export default function BinaryGrid({ setScreen }: Props) {
         onClick={() => setScreen("contact")}
         style={{
           textDecorationColor: "#e80050",
-          ["--label-color" as any]: "#e80050",
+          ["--label-color" as string]: "#e80050",
         }}
       >
         0110001101101111

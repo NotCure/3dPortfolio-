@@ -16,18 +16,34 @@ export default function ContactScreen({ setScreen }: Props) {
       <span className="text-white " onClick={() => setScreen("home")}>
         Back
       </span>
-      <p>Contact</p>
+      <p className="text-[#e80050]">Contact</p>
       <div className="flex flex-row gap-3.5">
-        <Link href="https://www.facebook.com/profile.php?id=61574823005894">
+        <Link
+          href="https://www.facebook.com/profile.php?id=61574823005894"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon icon={faFacebook} />
         </Link>
-        <Link href="https://www.linkedin.com/in/ebrahim-hdida/">
+        <Link
+          href="https://www.linkedin.com/in/ebrahim-hdida/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon icon={faLinkedin} />
         </Link>
-        <Link href="mailto:hdidaebrahim@gmail.com">
+        <Link
+          href="mailto:hdidaebrahim@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon icon={faEnvelope} />
         </Link>
-        <Link href="https://github.com/NotCure">
+        <Link
+          href="https://github.com/NotCure"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon icon={faGithub} />
         </Link>
       </div>
