@@ -21,7 +21,7 @@ export default function ContactScreen({ setScreen }: Props) {
         <Link href="https://www.facebook.com/profile.php?id=61574823005894">
           <FontAwesomeIcon icon={faFacebook} />
         </Link>
-        <Link href="https://www.facebook.com/ebrahim.khalil.1">
+        <Link href="https://www.linkedin.com/in/ebrahim-hdida/">
           <FontAwesomeIcon icon={faLinkedin} />
         </Link>
         <Link href="mailto:hdidaebrahim@gmail.com">
