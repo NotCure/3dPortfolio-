@@ -21,7 +21,7 @@ const techImages: Record<string, string> = {
 
 export default function ProjectCard({ url, title, description, tech }: Props) {
   return (
-    <div className="border border-white rounded-xs p-1">
+    <div className="border-[0.2px] border-white rounded-xs p-1">
       <h2>{title}</h2>
       <p className="text-[0.21rem]">{description}</p>
       <div className="flex mt-1 flex-row items-center space-x-0.5 text-[0.4rem]">
