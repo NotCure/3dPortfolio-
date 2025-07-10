@@ -17,16 +17,17 @@ const techImages: Record<string, string> = {
   Nextjs: "/logos/Nextjs.svg",
   Typescript: "/logos/Typescript.svg",
   Threejs: "/logos/Threejs.png",
+  Mongodb: "/logos/Mongodb.svg",
 };
 
 export default function ProjectCard({ url, title, description, tech }: Props) {
   return (
-    <div className="border-[0.2px] border-white rounded-xs p-1">
+    <div className="border-[0.2px] border-white rounded-xs p-1 max-w-[4.6rem] min-w-[4.6rem]">
       <h2>{title}</h2>
       <p className="text-[0.21rem]">{description}</p>
-      <div className="flex mt-1 flex-row items-center space-x-0.5 text-[0.4rem]">
+      <div className="flex mt-1 flex-row items-center space-x-0.5 text-[0.55rem] font-bold">
         <Link href={url} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon className="text-[0.5rem]" icon={faGithub} />
+          <FontAwesomeIcon className="text-[0.55rem]" icon={faGithub} />
         </Link>
         <p>-</p>
         {tech.map((techName, index) => {
