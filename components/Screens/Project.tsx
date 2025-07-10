@@ -18,7 +18,13 @@ export default function ContactScreen({ setScreen }: Props) {
           url="https://github.com/ebrahimhdida/Portfolio3D"
           title="SVGRAFIX"
           description="SVG parser & renderer in C++"
-          tech="Javascript"
+          tech={["Cpp"]}
+        />
+        <ProjectCard
+          url="https://github.com/ebrahimhdida/Portfolio3D"
+          title="3D Portfolio"
+          description="It is the one you are currently looking at."
+          tech={["Nextjs", "Typescript", "Threejs"]}
         />
       </div>
     </div>
