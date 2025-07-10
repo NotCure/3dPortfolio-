@@ -12,7 +12,7 @@ type Props = {
 
 const projects = [
   {
-    url: "https://github.com/ebrahimhdida/Portfolio3D",
+    url: "https://github.com/NotCure/SVGrafix",
     title: "SVGRAFIX",
     description: "SVG parser & renderer in C++",
     tech: ["Cpp"],
@@ -24,13 +24,13 @@ const projects = [
     tech: ["Nextjs", "Typescript", "Threejs"],
   },
   {
-    url: "https://github.com/ebrahimhdida/other-project",
+    url: "https://github.com/NotCure/backendeField",
     title: "EField Backend",
     description: "Soccer League backend with MongoDB non-sql database",
     tech: ["Nextjs", "Typescript", "Mongodb"],
   },
   {
-    url: "https://github.com/ebrahimhdida/another",
+    url: "https://github.com/NotCure/efa",
     title: "EField",
     description: "Soccer League webapp with steam/discord verifcation",
     tech: ["Nextjs", "Typescript", "Javascript"],

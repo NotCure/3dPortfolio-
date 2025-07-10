@@ -27,18 +27,18 @@ export default function Scene() {
   const [screen, setScreen] = useState("home");
   return (
     <>
-      <FixedCamera />
+      {/* <FixedCamera /> */}
       <Monitor position={[0, 0, 0]} screen={screen} setScreen={setScreen} />
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[10, 10]} />
         <shadowMaterial opacity={0.3} />
       </mesh>
-      {/* <OrbitControls
+      <OrbitControls
         enablePan={false}
         minDistance={0}
         maxDistance={6}
         target={[0, 0.7, 0]}
-      /> */}
+      />
       <SceneLights screen={screen} />
     </>
   );

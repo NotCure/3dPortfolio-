@@ -20,6 +20,16 @@ type Props = {
   setScreen: (screen: string) => void;
 };
 export default function Monitor({ screen, setScreen }: Props) {
+  const [isRotating, setIsRotating] = useState(false);
+  const [pendingScreen, setPendingScreen] = useState<string | null>(null);
+  const [rotationY, setRotationY] = useState(0);
+
+  function handleScreenChange(newScreen: string) {
+    if (isRotating || newScreen === screen) return;
+    setPendingScreen(newScreen);
+    setIsRotating(true);
+  }
+
   const gltf: any = useGLTF(MODEL);
   const screenMaterial = useRef<THREE.MeshStandardMaterial>(null);
   const monitorRef = useRef<THREE.Group>(null);
@@ -28,6 +38,32 @@ export default function Monitor({ screen, setScreen }: Props) {
       monitorRef.current.position.y = 10;
     }
   }, []);
+
+  useFrame(() => {
+    if (!monitorRef.current) return;
+
+    if (isRotating) {
+      const rotation = monitorRef.current.rotation.y;
+      const targetRotation = 2 * Math.PI;
+      const speed = 0.02;
+
+      monitorRef.current.rotation.y = THREE.MathUtils.lerp(
+        rotation,
+        targetRotation,
+        speed
+      );
+
+      if (rotation > Math.PI && pendingScreen) {
+        setScreen(pendingScreen);
+        setPendingScreen(null);
+      }
+
+      if (Math.abs(monitorRef.current.rotation.y - targetRotation) < 0.01) {
+        monitorRef.current.rotation.y = 0;
+        setIsRotating(false);
+      }
+    }
+  });
 
   useFrame(({ clock }) => {
     if (!screenMaterial.current) return;
@@ -54,70 +90,85 @@ export default function Monitor({ screen, setScreen }: Props) {
   return (
     <>
       <primitive object={nodes.Table} />
-      <LandAnimation
-        fromY={10}
-        toY={0}
-        speed={0.006}
-        fromRotationY={Math.PI * 6}
-        toRotationY={0}
-      >
-        <primitive object={nodes.TV} castShadow />
+      <group>
+        <LandAnimation
+          fromY={10}
+          toY={0}
+          speed={0.006}
+          fromRotationY={Math.PI * 6}
+          toRotationY={0}
+        >
+          <group ref={monitorRef}>
+            <primitive object={nodes.TV} castShadow />
 
-        <mesh geometry={nodes.Screen.geometry} position={nodes.Screen.position}>
-          <meshStandardMaterial
-            ref={screenMaterial}
-            color="#0a0f0a"
-            emissive="#001c0f"
-            emissiveIntensity={1.4}
-            metalness={0.05}
-            roughness={0.45}
-            side={THREE.DoubleSide}
-          />
-          <Html transform distanceFactor={1}>
-            <div className="transition-opacity duration-300 ease-in-out">
-              {screen === "home" && <BinaryGrid setScreen={setScreen} />}
-              {screen === "about" && <AboutScreen setScreen={setScreen} />}
-              {screen === "contact" && <ContactScreen setScreen={setScreen} />}
-              {screen === "projects" && <Project setScreen={setScreen} />}
-            </div>
-          </Html>
-        </mesh>
-        {[
-          "Curve",
-          "Curve001",
-          "Curve002",
-          "Curve003",
-          "Curve004",
-          "Curve005",
-          "Curve006",
-          "Curve007",
-          "Curve008",
-          "Curve009",
-          "Curve010",
-          "Curve011",
-        ].map((name) => {
-          const mesh = nodes[name];
-          return (
             <mesh
-              key={name}
-              geometry={mesh.geometry}
-              position={mesh.position}
-              rotation={mesh.rotation}
-              scale={mesh.scale}
-              castShadow
-              receiveShadow
+              geometry={nodes.Screen.geometry}
+              position={nodes.Screen.position}
             >
-              <meshStandardMaterial {...mesh.material} />
+              <meshStandardMaterial
+                ref={screenMaterial}
+                color="#0a0f0a"
+                emissive="#001c0f"
+                emissiveIntensity={1.4}
+                metalness={0.05}
+                roughness={0.45}
+                side={THREE.DoubleSide}
+              />
+              <Html transform distanceFactor={1}>
+                <div className="transition-opacity duration-300 ease-in-out">
+                  {screen === "home" && (
+                    <BinaryGrid setScreen={handleScreenChange} />
+                  )}
+                  {screen === "about" && (
+                    <AboutScreen setScreen={handleScreenChange} />
+                  )}
+                  {screen === "contact" && (
+                    <ContactScreen setScreen={handleScreenChange} />
+                  )}
+                  {screen === "projects" && (
+                    <Project setScreen={handleScreenChange} />
+                  )}
+                </div>
+              </Html>
             </mesh>
-          );
-        })}
-        <pointLight
-          position={PointPos}
-          intensity={0.8}
-          color="#FF2E31"
-          distance={0.017}
-        />
-      </LandAnimation>
+            {[
+              "Curve",
+              "Curve001",
+              "Curve002",
+              "Curve003",
+              "Curve004",
+              "Curve005",
+              "Curve006",
+              "Curve007",
+              "Curve008",
+              "Curve009",
+              "Curve010",
+              "Curve011",
+            ].map((name) => {
+              const mesh = nodes[name];
+              return (
+                <mesh
+                  key={name}
+                  geometry={mesh.geometry}
+                  position={mesh.position}
+                  rotation={mesh.rotation}
+                  scale={mesh.scale}
+                  castShadow
+                  receiveShadow
+                >
+                  <meshStandardMaterial {...mesh.material} />
+                </mesh>
+              );
+            })}
+            <pointLight
+              position={PointPos}
+              intensity={0.8}
+              color="#FF2E31"
+              distance={0.017}
+            />
+          </group>
+        </LandAnimation>
+      </group>
     </>
   );
 }
