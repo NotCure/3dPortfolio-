@@ -12,12 +12,12 @@ type Props = {
 
 export default function ContactScreen({ setScreen }: Props) {
   return (
-    <div className="flex flex-col justify-center text-center text-[0.5rem] space-y-[0.4rem] text-white">
+    <div className="flex flex-col justify-center text-center text-[0.5rem]  text-white">
       <span className="text-white " onClick={() => setScreen("home")}>
         Back
       </span>
-      <p className="text-[#e80050]">Contact</p>
-      <div className="flex flex-row gap-3.5">
+      <p className="text-[#e80050] font-bold pb-2">Contact</p>
+      <div className="flex flex-row gap-2.5">
         <Link
           href="https://www.facebook.com/profile.php?id=61574823005894"
           target="_blank"

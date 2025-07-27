@@ -22,7 +22,6 @@ type Props = {
 export default function Monitor({ screen, setScreen }: Props) {
   const [isRotating, setIsRotating] = useState(false);
   const [pendingScreen, setPendingScreen] = useState<string | null>(null);
-  const [rotationY, setRotationY] = useState(0);
 
   function handleScreenChange(newScreen: string) {
     if (isRotating || newScreen === screen) return;
@@ -33,11 +32,6 @@ export default function Monitor({ screen, setScreen }: Props) {
   const gltf: any = useGLTF(MODEL);
   const screenMaterial = useRef<THREE.MeshStandardMaterial>(null);
   const monitorRef = useRef<THREE.Group>(null);
-  useEffect(() => {
-    if (monitorRef.current) {
-      monitorRef.current.position.y = 10;
-    }
-  }, []);
 
   useFrame(() => {
     if (!monitorRef.current) return;

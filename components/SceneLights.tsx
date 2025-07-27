@@ -38,6 +38,8 @@ export default function SceneLights({ screen }: Props) {
         return "#0585fa";
       case "contact":
         return "#e80050";
+      case "projects":
+        return "#fbff00";
       case "home":
       default:
         return "#00e87b";

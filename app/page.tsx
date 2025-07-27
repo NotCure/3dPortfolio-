@@ -10,7 +10,7 @@ export default function Home() {
     <main className="w-screen h-screen bg-black">
       <Canvas shadows camera={{ position: cameraPos, fov: 50 }}>
         <color attach="background" args={["#020101"]} />
-        
+
         <Suspense fallback={null}>
           <Scene />
         </Suspense>
