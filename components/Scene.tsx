@@ -18,6 +18,7 @@ function useIsMobile(breakpoint = 768) {
   return width < breakpoint;
 }
 
+
 function FixedCamera() {
   const camRef = useRef<THREE.PerspectiveCamera>(null);
   const isMobile = useIsMobile();
@@ -42,7 +43,7 @@ export default function Scene() {
   return (
     <>
       <FixedCamera />
-      <Monitor position={[0, 0, 0]} screen={screen} setScreen={setScreen} />
+      <Monitor screen={screen} setScreen={setScreen} />
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[10, 10]} />
         <shadowMaterial opacity={0.3} />
