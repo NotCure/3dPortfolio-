@@ -15,9 +15,9 @@ type LandAnimationProps = {
 
 export default function LandAnimation({
   children,
-  fromY = 10,
+  fromY = 5,
   toY = 0,
-  speed = 0.4,
+  speed = 1,
   fromRotationY = Math.PI * 2,
   toRotationY = 0,
 }: LandAnimationProps) {

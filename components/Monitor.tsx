@@ -106,9 +106,9 @@ export default function Monitor({ screen, setScreen }: Props) {
                 emissiveIntensity={1.4}
                 metalness={0.05}
                 roughness={0.45}
-                side={THREE.DoubleSide}
+                side={THREE.FrontSide}
               />
-              <Html transform distanceFactor={1}>
+              <Html transform distanceFactor={1} occlude>
                 <div className="transition-opacity duration-300 ease-in-out">
                   {screen === "home" && (
                     <BinaryGrid setScreen={handleScreenChange} />
